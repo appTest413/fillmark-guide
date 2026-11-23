@@ -14,7 +14,7 @@ and never synced, except when you send one to your other device yourself.
 | **Alpaca** | Free real-time stock quotes and charts (the IEX exchange) | A free Alpaca sign-up, no brokerage account; no option chains |
 | **Schwab** | Import only: its transactions export (drag the CSV in). A live connection is planned | |
 | **Fidelity** | Import only: its account history export (drag the CSV in). Fidelity has no API for individual investors | |
-| **Vanguard** | Import only: its Download center CSV (drag it in). Vanguard has no API for individual investors | |
+| **Vanguard** | Import only: its Download center Quicken file (.qfx; drag it in). Vanguard has no API for individual investors | |
 | **Nothing** | The journal, imports, Study and Stats still work; charts show made-up "Sample" prices | |
 
 ## The screen

@@ -53,7 +53,8 @@ Click a fill to [correct it](#correcting-a-fill).
 | **Tastytrade, file** | Export your activity as CSV (named like `tastytrade_activity_250224.csv`) and drag it onto Fillmark's window. If the name has no date, Fillmark asks which day it was exported |
 | **Schwab** | schwab.com → Accounts → History → Export (CSV), drag it in. Dates only, no times |
 | **Fidelity** | fidelity.com → Activity & Orders → History, pick the accounts and dates → Download (`Accounts_History.csv`), drag it in. Dates only, no times |
-| **Vanguard** | vanguard.com → Download center, pick the account and dates, CSV → download (`OfxDownload.csv`), drag it in. Dates only, no times |
+| **Vanguard** | vanguard.com → Download center, pick the account and dates, **Quicken (.qfx)** → download (`OfxDownload.qfx`), drag it in. Dates only, no times |
+| **Other Quicken / Money files** | A `.qfx` or `.ofx` download from another broker is read the same way (checked only against Vanguard's so far) |
 | **Schwab with times (thinkorswim)** | Monitor → Account Statement, set From and To, then the menu at the top right → Export to File. Drag it in. Exact execution times (New York) and fees |
 | **Anything else** | **Add a fill manually** |
 
@@ -83,14 +84,16 @@ a duplicate, or couldn't be read (**Show problems**).
   **Show problems**; a problem report helps.
 
 **Vanguard notes:**
-- Only the transactions are read; the holdings list at the top of the file
-  is left alone. Each fill gets its account's last four digits.
-- Sweeps into and out of the money market, dividends, splits and expiries
-  are listed as skipped. A split isn't applied to the share count.
-- **Vanguard leaves out the contract** on option rows for contracts no
-  longer held when you download (closed or expired). Those rows are listed
-  as errors: add them with **Add a fill manually**, or download more often,
-  while the contracts are still held.
+- Use the **.qfx**. Vanguard's CSV leaves the contract out of option rows
+  for contracts no longer held, so those rows can't be read (they're listed
+  as errors).
+- Options are read from each trade's description ("PUT NVIDIA CORP $170 EXP
+  11/13/26"), which names the company, not the ticker. Fillmark matches the
+  name to the stocks in the file and a list of common ones; a company it
+  can't match is listed as an error by name, to add by hand.
+- Each fill gets its account's last four digits. Money-market sweeps,
+  dividends and splits are skipped; a split isn't applied to the share
+  count.
 
 **Watch a folder…** (e.g. Downloads): Tastytrade exports saved there import
 by themselves. Schwab, Fidelity and Vanguard files still need dragging in.

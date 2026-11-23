@@ -33,7 +33,7 @@ administrator rights) and opens Fillmark.
 - **Every other broker**: export a file and drag it onto Fillmark's window.
   - Schwab: Accounts → History → Export (dates only).
   - Fidelity: Activity & Orders → History → Download (dates only).
-  - Vanguard: Download center → CSV (dates only).
+  - Vanguard: Download center → Quicken .qfx (dates only).
   - thinkorswim: Monitor → Account Statement → Export to File (exact times
     and fees).
 - Import again whenever you've traded; re-importing never makes duplicates.
