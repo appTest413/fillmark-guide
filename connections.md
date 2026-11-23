@@ -13,6 +13,8 @@ and never synced, except when you send one to your other device yourself.
 | **Tastytrade** | Real-time quotes and charts, option chains, Build a trade, the company card, trade-history sync | A Tastytrade account |
 | **Alpaca** | Free real-time stock quotes and charts (the IEX exchange) | A free Alpaca sign-up, no brokerage account; no option chains |
 | **Schwab** | Import only: its transactions export (drag the CSV in). A live connection is planned | |
+| **Fidelity** | Import only: its account history export (drag the CSV in). Fidelity has no API for individual investors | |
+| **Vanguard** | Import only: its Download center CSV (drag it in). Vanguard has no API for individual investors | |
 | **Nothing** | The journal, imports, Study and Stats still work; charts show made-up "Sample" prices | |
 
 ## The screen
@@ -30,7 +32,7 @@ From the top:
   | **Connected ✓ · read-only** | Logged in with a read-only login |
   | **Connected ✓ · can trade (Fillmark never does)** | The login itself is allowed to trade (as in the screenshot). Fillmark still can't: the order addresses are blocked inside the app |
   | **Not connected** | No login on this device; the button connects it |
-  | **Import only** | Schwab: trades come in from its CSV export |
+  | **Import only** | Schwab, Fidelity and Vanguard: trades come in from their CSV downloads |
 
   The text under each says what it gives you; **Disconnect** removes the
   login from this device's keychain.

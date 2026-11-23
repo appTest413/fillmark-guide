@@ -52,6 +52,8 @@ Click a fill to [correct it](#correcting-a-fill).
 | **Tastytrade, connected** | **Check against Tastytrade** (below): no file needed |
 | **Tastytrade, file** | Export your activity as CSV (named like `tastytrade_activity_250224.csv`) and drag it onto Fillmark's window. If the name has no date, Fillmark asks which day it was exported |
 | **Schwab** | schwab.com → Accounts → History → Export (CSV), drag it in. Dates only, no times |
+| **Fidelity** | fidelity.com → Activity & Orders → History, pick the accounts and dates → Download (`Accounts_History.csv`), drag it in. Dates only, no times |
+| **Vanguard** | vanguard.com → Download center, pick the account and dates, CSV → download (`OfxDownload.csv`), drag it in. Dates only, no times |
 | **Schwab with times (thinkorswim)** | Monitor → Account Statement, set From and To, then the menu at the top right → Export to File. Drag it in. Exact execution times (New York) and fees |
 | **Anything else** | **Add a fill manually** |
 
@@ -68,8 +70,30 @@ a duplicate, or couldn't be read (**Show problems**).
 - A thinkorswim statement replaces the date-only fills of its account and
   days; futures in a statement aren't read yet.
 
+**Fidelity notes:**
+- One file can hold several accounts; each fill gets its own (the last four
+  digits of the account number).
+- 529 portfolios have no ticker: the fund code in brackets after the fund's
+  name stands in for one, so Fillmark has no prices for them.
+- Deposits, dividends, interest and fees are listed as skipped, and so are
+  option expiries and assignments and the shares delivered for them:
+  Fillmark settles those itself.
+- Options follow Fidelity's published layout and haven't been checked
+  against a real options file yet. A row that doesn't read is listed under
+  **Show problems**; a problem report helps.
+
+**Vanguard notes:**
+- Only the transactions are read; the holdings list at the top of the file
+  is left alone. Each fill gets its account's last four digits.
+- Sweeps into and out of the money market, dividends, splits and expiries
+  are listed as skipped. A split isn't applied to the share count.
+- **Vanguard leaves out the contract** on option rows for contracts no
+  longer held when you download (closed or expired). Those rows are listed
+  as errors: add them with **Add a fill manually**, or download more often,
+  while the contracts are still held.
+
 **Watch a folder…** (e.g. Downloads): Tastytrade exports saved there import
-by themselves. Schwab files still need dragging in.
+by themselves. Schwab, Fidelity and Vanguard files still need dragging in.
 
 ## Check against Tastytrade
 
@@ -103,7 +127,7 @@ digits (`…1234`).
 - **Accounts**: give each a nickname (IRA, Swing…); it shows as
   `IRA · …1234` everywhere, on every synced device. The AI export never
   includes nicknames.
-- Schwab files carry the account; a Tastytrade CSV doesn't. Fills with no
+- Schwab, Fidelity and Vanguard files carry the account; a Tastytrade CSV doesn't. Fills with no
   account count toward the broker's only account. With several accounts,
   an import with such fills says so: **Set account…** picks which one.
 
