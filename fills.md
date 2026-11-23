@@ -14,8 +14,8 @@ in.
 **The top row**: the folder being watched ("No folder watched") and the
 tools: [Watch a folder…](#bringing-trades-in), [Add a fill
 manually](#add-a-fill-manually), [Check against
-Tastytrade…](#check-against-tastytrade), **Match & rebuild**, [Check Schwab
-positions…](#check-schwab-positions) and [Clean up…](#clean-up).
+Tastytrade…](#check-against-tastytrade), **Match & rebuild**, [Check
+positions…](#check-positions) and [Clean up…](#clean-up).
 
 **Match & rebuild** goes through your trades and gives each one its market
 context at entry: it matches a [snapshot](snapshots.md) you took when you
@@ -91,9 +91,16 @@ a duplicate, or couldn't be read (**Show problems**).
   11/13/26"), which names the company, not the ticker. Fillmark matches the
   name to the stocks in the file and a list of common ones; a company it
   can't match is listed as an error by name, to add by hand.
-- Each fill gets its account's last four digits. Money-market sweeps,
-  dividends and splits are skipped; a split isn't applied to the share
-  count.
+- Each fill gets its account's last four digits. Money-market sweeps and
+  dividends are skipped.
+- A roll's two legs on one day join into one order, even when the file
+  lists them apart.
+- A split adds its new shares as a $0 buy: the share count comes right and
+  the total cost stays. A reverse split is listed, to adjust by hand.
+  Vanguard's .qfx sometimes leaves a split out; **Check positions…** shows
+  it.
+- Don't import both the .qfx and the CSV for the same dates: the trades
+  would be doubled.
 
 **Watch a folder…** (e.g. Downloads): Tastytrade exports saved there import
 by themselves. Schwab, Fidelity and Vanguard files still need dragging in.
@@ -134,14 +141,22 @@ digits (`…1234`).
   account count toward the broker's only account. With several accounts,
   an import with such fills says so: **Set account…** picks which one.
 
-## Check Schwab positions…
+## Check positions…
 
-To catch a missing or doubled import: on schwab.com, Accounts → Positions
-→ Export (one account at a time), then drag it in or use **Check Schwab
-positions…**. It's only compared, never imported. Each holding that differs
-is listed with both quantities; all matching shows ✓. Usual causes: a
-transactions export that doesn't go back far enough, or fills in the wrong
-account.
+To catch a missing or doubled import, compare what the broker says you hold
+with what Fillmark worked out from your fills:
+
+- **Schwab:** on schwab.com, Accounts → Positions → Export (one account at
+  a time), then drag it in or use **Check positions…**. It's only
+  compared, never imported.
+- **Vanguard** (or another Quicken download): the .qfx lists the holdings
+  too. Import it, then **Check positions…** and pick the same file. Only
+  shares and funds are compared (Vanguard's file doesn't say which option
+  contracts are held); the money market is left out.
+
+Each holding that differs is listed with both quantities; all matching
+shows ✓. Usual causes: a transactions export that doesn't go back far
+enough, a split the file didn't report, or fills in the wrong account.
 
 ## Clean up…
 
