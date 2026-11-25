@@ -40,4 +40,4 @@
 - On Android, install from Google Play (or a release build): test builds
   can be inspected over USB.
 
-The full privacy policy is published with the app's store listing.
+The full text is in the [privacy policy](privacy-policy.md).

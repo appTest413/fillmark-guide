@@ -37,7 +37,7 @@ Each screen has its own page:
 | | [License](license.md) | Your license or trial |
 | | [Help and problem reports](help.md) | How-to guides, definitions, reporting a problem |
 
-Also: [Privacy and security](privacy-and-security.md), what Fillmark keeps,
+Also: [Privacy and security](privacy-and-security.md) (and the [privacy policy](privacy-policy.md)), what Fillmark keeps,
 where, and what it never does.
 
 ## Phone and PC
